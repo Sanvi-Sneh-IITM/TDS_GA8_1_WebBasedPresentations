@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quarterly Earnings — RevealJS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Reveal core + theme from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+
+    <!-- Highlight.js for code highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Title slide -->
+        <section>
+          <h1>Quarterly Earnings Report</h1>
+          <p class="lead">Modern, interactive presentation using RevealJS</p>
+          <p><small>Prepared by: Financial Analytics Team</small></p>
+          <p><small>Contact: <a href="mailto:22f3003023@ds.study.iitm.ac.in">22f3003023@ds.study.iitm.ac.in</a></small></p>
+          <aside class="notes">
+            Welcome slide: quick context, highlight major topline, indicate slide flow.
+          </aside>
+        </section>
+
+        <!-- Markdown slide: shows use of data-markdown plugin -->
+        <section data-markdown>
+          <textarea data-template>
+## Executive Summary (Markdown slide)
+
+- Revenue growth: **+8.4%** quarter-over-quarter
+- Operating margin improved due to cost controls
+- Key drivers:
+  - Product A uptake
+  - Reduction in COGS
+  - Strategic pricing
+
+---
+
+### Quick code snippet (for technical audience)
+
+```python
+def revenue_growth(prev, curr):
+    return (curr - prev) / prev * 100
