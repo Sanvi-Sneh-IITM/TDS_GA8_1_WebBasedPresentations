@@ -5,47 +5,198 @@
     <title>Quarterly Earnings — RevealJS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Reveal core + theme from CDN -->
+    <!-- RevealJS Core -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
 
     <!-- Highlight.js for code highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/custom.css">
+    <style>
+      .chart {
+        height: 350px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+      .lead {
+        font-size: 1.3rem;
+        color: #444;
+      }
+    </style>
   </head>
+
   <body>
     <div class="reveal">
       <div class="slides">
 
-        <!-- Title slide -->
+        <!-- Title Slide -->
         <section>
           <h1>Quarterly Earnings Report</h1>
-          <p class="lead">Modern, interactive presentation using RevealJS</p>
-          <p><small>Prepared by: Financial Analytics Team</small></p>
-          <p><small>Contact: <a href="mailto:22f3003023@ds.study.iitm.ac.in">22f3003023@ds.study.iitm.ac.in</a></small></p>
+          <p class="lead">Interactive RevealJS Presentation</p>
+          <p><small>Email: <strong>22f3003023@ds.study.iitm.ac.in</strong></small></p>
+
           <aside class="notes">
-            Welcome slide: quick context, highlight major topline, indicate slide flow.
+            Welcome stakeholders. This presentation shows quarterly performance & interactive features.
           </aside>
         </section>
 
-        <!-- Markdown slide: shows use of data-markdown plugin -->
+        <!-- Markdown Slide -->
         <section data-markdown>
           <textarea data-template>
-## Executive Summary (Markdown slide)
+## Executive Summary (Markdown Slide)
 
-- Revenue growth: **+8.4%** quarter-over-quarter
-- Operating margin improved due to cost controls
-- Key drivers:
-  - Product A uptake
-  - Reduction in COGS
-  - Strategic pricing
+- **Revenue Growth:** +8.4%
+- **Net Profit:** Up by 6.1%
+- **Cost Efficiency:** Improved OPEX
 
 ---
 
-### Quick code snippet (for technical audience)
+### Code Example (Markdown)
 
 ```python
-def revenue_growth(prev, curr):
-    return (curr - prev) / prev * 100
+def growth(previous, current):
+    return (current - previous) / previous * 100
+```
+          </textarea>
+
+          <aside class="notes">
+            This slide is written fully in Markdown.
+          </aside>
+        </section>
+
+        <!-- Animated Fragments -->
+        <section>
+          <h2>Quarterly Priorities</h2>
+          <ul>
+            <li class="fragment">Expand user acquisition</li>
+            <li class="fragment">Improve conversion funnel</li>
+            <li class="fragment fade-up">Automate financial dashboards</li>
+          </ul>
+
+          <aside class="notes">
+            Each bullet appears one by one to explain the strategy clearly.
+          </aside>
+        </section>
+
+        <!-- Code Highlighting -->
+        <section>
+          <h2>ETL Pipeline (Technical Process)</h2>
+
+          <pre><code class="python" data-line-numbers="1-3|5-7">
+import pandas as pd
+
+# Load dataset
+df = pd.read_csv("q3_transactions.csv")
+
+# Group revenue by product
+summary = df.groupby("product").revenue.sum()
+print(summary)
+          </code></pre>
+
+          <aside class="notes">
+            Demonstrate how backend aggregates revenue values.
+          </aside>
+        </section>
+
+        <!-- Math + Finance Formula -->
+        <section>
+          <h2>Financial Formula</h2>
+
+          <p>
+            \[
+              ROI = rac{	ext{Net Profit}}{	ext{Total Investment}}
+            \]
+          </p>
+
+          <p>
+            \[
+              \mathbb{E}[	ext{Return}] = \sum_i p_i R_i
+            \]
+          </p>
+
+          <aside class="notes">
+            Use these formulas to explain projected financial returns.
+          </aside>
+        </section>
+
+        <!-- Interactive Chart -->
+        <section id="chart-slide">
+          <h2>Revenue Chart (Interactive)</h2>
+          <div id="chart" class="chart fragment"></div>
+
+          <aside class="notes">
+            When this slide appears, the chart loads via inline JS.
+          </aside>
+        </section>
+
+        <!-- Final Slide -->
+        <section>
+          <h2>Thank You</h2>
+          <p>Questions?</p>
+
+          <aside class="notes">
+            Wrap up and invite questions.
+          </aside>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.esm.js"></script>
+
+    <!-- Inline JS -->
+    <script>
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        progress: true,
+        controls: true,
+        transition: "slide",
+        plugins: [RevealMarkdown, RevealHighlight, RevealMath],
+        math: {
+          mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        }
+      });
+
+      function renderChart() {
+        const container = document.getElementById("chart");
+        container.innerHTML = "";
+
+        const canvas = document.createElement("canvas");
+        canvas.width = 600;
+        canvas.height = 300;
+        container.appendChild(canvas);
+
+        const ctx = canvas.getContext("2d");
+        const data = [80, 120, 150, 200];
+        const labels = ["Q1", "Q2", "Q3", "Q4"];
+        const barWidth = 80;
+        const gap = 40;
+
+        ctx.font = "16px Arial";
+
+        data.forEach((value, i) => {
+          const x = 50 + i * (barWidth + gap);
+          const y = 260 - value;
+
+          ctx.fillStyle = "#4A90E2";
+          ctx.fillRect(x, y, barWidth, value);
+
+          ctx.fillStyle = "#000";
+          ctx.fillText(labels[i], x + 20, 280);
+        });
+      }
+
+      Reveal.addEventListener("slidechanged", (event) => {
+        if (event.currentSlide.id === "chart-slide") {
+          renderChart();
+        }
+      });
+    </script>
+
+  </body>
+</html>
