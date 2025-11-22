@@ -1,0 +1,19 @@
+.reveal {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.reveal .lead {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.chart {
+  width: 90%;
+  height: 360px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
